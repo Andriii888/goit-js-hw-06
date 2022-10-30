@@ -6,3 +6,14 @@ const ingredients = [
   'Herbs',
   'Condiments',
 ];
+
+const listOfIngredientsRef = document.querySelector('#ingredients')
+function addItemsIngredients() {
+  ingredients.forEach(item => {
+const itemNameRef = document.createElement('li');
+    itemNameRef.classList.add('item');
+    itemNameRef.textContent = item;
+   return listOfIngredientsRef.append(itemNameRef);
+  })
+}
+addItemsIngredients();
