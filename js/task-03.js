@@ -18,7 +18,7 @@ const listGalaryRef = document.querySelector('.gallery');
 function addImgGalary(imagesEl) {
    
   return imagesEl.map(({ url, alt }) => {
-    return `<li><img src = "${url}" alt = "${alt}"/></li>`;
+    return `<li><img src = "${url}" alt = "${alt}" class = "gallery__imgs"/></li>`;
   }).join(' ')
  }
     listGalaryRef.insertAdjacentHTML("beforeend", addImgGalary(images));
