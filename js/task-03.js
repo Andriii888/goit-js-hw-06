@@ -14,15 +14,12 @@ const images = [
 ];
 
 const listGalaryRef = document.querySelector('.gallery');
-console.log(listGalaryRef);
-function addImgGalary() {
-      const arrayImgString = [];
 
-  images.map(({ url, alt } = images) => {
-    const stringImg = `<li><img src = "${url}" alt = "${alt}"/></li>`;
-    arrayImgString.push(stringImg);
-  })
-  return arrayImgString.join(' ')
+function addImgGalary(imagesEl) {
+   
+  return imagesEl.map(({ url, alt }) => {
+    return `<li><img src = "${url}" alt = "${alt}"/></li>`;
+  }).join(' ')
  }
-    listGalaryRef.insertAdjacentHTML("beforeend", addImgGalary());
+    listGalaryRef.insertAdjacentHTML("beforeend", addImgGalary(images));
 
