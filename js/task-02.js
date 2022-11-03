@@ -8,16 +8,16 @@ const ingredients = [
 ];
 
 const listOfIngredientsRef = document.querySelector('#ingredients');
-  const arrayAddedEl = [];
+ 
 
 function addItemsIngredients(arrayEl) {
   
- arrayEl.forEach(item => {
+ return arrayEl.map(item => {
 const itemNameRef = document.createElement('li');
     itemNameRef.classList.add('item');
     itemNameRef.textContent = item;
-   return arrayAddedEl.push(itemNameRef);
+   return itemNameRef;
   })
 }
-addItemsIngredients(ingredients);
+ const arrayAddedEl = addItemsIngredients(ingredients);
 listOfIngredientsRef.append(...arrayAddedEl)

@@ -4,60 +4,44 @@ const refs = {
   btnDestroyRef: document.querySelector('button[data-destroy]'),
   perfomsBoxRef: document.querySelector('#boxes'),
 };
-const amount = refs.boxControleRef.firstElementChild.value;
-let sizeOfBox = 30;
 
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215)
     .toString(16)
     .padStart(6, 0)}`;
 };
-/////////////////////////////ще дописую/////////
 
-refs.btnCreateRef.addEventListener('click',createBoxes)
 
-function createBoxes(amount) { 
-  const styleForBox = document.createElement('style');
-  styleForBox.textContent = `.box_style{
-    width : ${sizeOfBox}px;
-    height : ${sizeOfBox}px;
-    background-color : ${getRandomHexColor()};`;
+refs.btnCreateRef.addEventListener('click', createBoxes);
+
+function createBoxes() { 
+
+ let amount = refs.boxControleRef.firstElementChild.value;
+
+  for (let i = 1; i <= amount; i += 1) {
+
+    let createSize = 0;
+    if (i === 1) { createSize = 30 }
+    else { createSize = (i + 3) * 10 };
+    
+     const styleForBox = document.createElement('style');
   document.head.appendChild(styleForBox);
+    styleForBox.textContent = `.box_style${i}{
+    width : ${createSize}px;
+    height : ${createSize}px;
+    background-color : ${getRandomHexColor()};`;
 
-  const firstElement = document.createElement('div');
-  firstElement.classList.add('box_style');
-  console.log(firstElement.style.backgroundColor);
-
-  if (amount > 1) {
-    createAllBoxes();
-    return refs.perfomsBoxRef.appendChild(firstElement);
-}
-     return refs.perfomsBoxRef.appendChild(firstElement);
- 
-}; 
-function createAllBoxes(amount) {
-  for (let i = 1; i <= amount;i += 1) {
-    let otherElements = document.createElement('div');
-    let sizeForOtherBox = sizeOfBox + 10;
-    styleForBox.textContent += `.box_style${i}{
-      width : ${sizeForOtherBox}px;
-      height : ${sizeForOtherBox}px;
-      background-color : ${getRandomHexColor()};`;
-
-    firstElement.appendChild(otherElements);
-    }
-};
-
-function createSize(number) {
-  for (let i = 1; i <= number; i += 1) {
-    let sizeOfBoxr = 30;
-    sizeOfBoxr[i] = sizeOfBoxr[i]+10;
-    console.dir(sizeOfBoxr[i])
-   }
-}
-createSize(10);
-
-function destroyBoxes() { 
+    const elements = document.createElement('div');
+    elements.classList.add(`box_style${i}`);
+     refs.perfomsBoxRef.appendChild(elements);
   
+  };
+}; 
+
+refs.btnDestroyRef.addEventListener('click', destroyBoxes);
+
+function destroyBoxes(event) { 
+  refs.boxControleRef.firstElementChild.value = ''; 
+  refs.perfomsBoxRef.textContent = "";
 };
 
