@@ -7,8 +7,9 @@ const docStyleRef = document.querySelector('style');
 changeColorBtnRef.addEventListener('click', onCreateColor);
 
 function onCreateColor(event) {
-  docStyleRef.textContent += `.js-widget{ background-color: ${getRandomHexColor()}}`;
-  currentColorTextRef.textContent = `${getRandomHexColor()}`;
+  const getColorFn = getRandomHexColor();
+  document.body.style.backgroundColor = getColorFn;
+  currentColorTextRef.textContent = `${getColorFn}`;
 };
 
 function getRandomHexColor() {
